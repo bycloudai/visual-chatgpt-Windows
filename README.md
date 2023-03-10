@@ -56,6 +56,9 @@ mkdir image
 
 # Start Visual ChatGPT !
 python visual_chatgpt.py
+
+# Sometimes you have to run share to be able to run it, well for me not using share doesn't work for some reason (don't share your public URL!)
+python visual_chatgpt.py --share
 ```
 
 The code has been set to 1 GPU only. From line `804` to `824`, it's all `device=cuda:0`
