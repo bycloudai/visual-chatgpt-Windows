@@ -72,6 +72,8 @@ This can be solved by using [https://github.com/rupeshs](rupeshs)'s suggestion.
 
 Here, choose the tool that you want to use if you have a limited VRAM. The GPU memory usage can be found in the below table.
 
+In the following image, Canny2Image, T2I, BLIP, and Image Caption are chosen. Around 10 VRAM is used.
+
 ![image](https://user-images.githubusercontent.com/29135514/224424232-dae66136-b846-4968-b494-c4c55d1bc60a.png)
 
 ![image](https://user-images.githubusercontent.com/29135514/224424247-5e804117-0994-4d96-b470-2b5a4a5c2484.png)
