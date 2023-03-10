@@ -15,28 +15,51 @@ See our paper: [<font size=5>Visual ChatGPT: Talking, Drawing and Editing with V
 
 ## Quick Start
 
-```
-# create a new environment
-conda create -n visgpt python=3.8
+Use [Anaconda](https://www.anaconda.com/) and launch in Administrator Mode
 
-# activate the new environment
-conda activate visgpt
+```
+# create a new environment & activate the new environment
+conda create -n visgpt python=3.8 && conda activate visgpt
 
 #  prepare the basic environments
 pip install -r requirement.txt
 
-# download the visual foundation models
-bash download.sh
+# Clone ControlNet
+git clone https://github.com/lllyasviel/ControlNet.git
 
+# Link the files from ControlNet
+mklink /D ldm ControlNet\ldm
+mklink /D cldm ControlNet\cldm
+mklink /D annotator ControlNet\annotator
+```
+
+download the visual foundation models and put it in `ControlNet/models`
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_canny.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_depth.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_hed.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_mlsd.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_normal.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_openpose.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_scribble.pth
+- https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_seg.pth
+
+```
 # prepare your private openAI private key
-export OPENAI_API_KEY={Your_Private_Openai_Key}
+set OPENAI_API_KEY={Your_Private_Openai_Key}
 
 # create a folder to save images
-mkdir ./image
+mkdir image
 
 # Start Visual ChatGPT !
 python visual_chatgpt.py
 ```
+
+The code has been set to 1 GPU only. From line `804` to `824`, it's all `device=cuda:0`
+
+Tested on RTX3090, unfortunately got `OutOfMemoryError: CUDA out of memory. Tried to allocate 86.00 MiB (GPU 0; 24.00 GiB total
+capacity; 23.00 GiB already allocated; 0 bytes free; 23.18 GiB reserved in total by PyTorch)
+If reserved memory is >> allocated memory try setting max_split_size_mb to avoid
+fragmentation.`
 
 ## GPU memory usage
 Here we list the GPU memory usage of each visual foundation model, one can modify ``self.tools`` with fewer visual foundation models to save your GPU memory:
