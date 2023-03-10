@@ -21,6 +21,10 @@ Use [Anaconda](https://www.anaconda.com/) and launch in Administrator Mode
 # create a new environment & activate the new environment
 conda create -n visgpt python=3.8 && conda activate visgpt
 
+# Install PyTorch via Conda
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+
+
 #  prepare the basic environments
 pip install -r requirement.txt
 
