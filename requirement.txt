@@ -26,3 +26,4 @@ diffusers
 gradio
 openai
 accelerate
+charset-normalizer==3.0.0
