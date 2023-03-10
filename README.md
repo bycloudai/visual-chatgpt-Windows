@@ -63,7 +63,16 @@ The code has been set to 1 GPU only. From line `804` to `824`, it's all `device=
 Tested on RTX3090, unfortunately got `OutOfMemoryError: CUDA out of memory. Tried to allocate 86.00 MiB (GPU 0; 24.00 GiB total
 capacity; 23.00 GiB already allocated; 0 bytes free; 23.18 GiB reserved in total by PyTorch)
 If reserved memory is >> allocated memory try setting max_split_size_mb to avoid
-fragmentation.`
+fragmentation.` It only can be ran on a A100 LOL
+
+This can be solved by using [https://github.com/rupeshs](rupeshs)'s suggestion.
+
+Here, choose the tool that you want to use if you have a limited VRAM. The GPU memory usage can be found in the below table.
+
+![image](https://user-images.githubusercontent.com/29135514/224424232-dae66136-b846-4968-b494-c4c55d1bc60a.png)
+
+![image](https://user-images.githubusercontent.com/29135514/224424247-5e804117-0994-4d96-b470-2b5a4a5c2484.png)
+
 
 ## GPU memory usage
 Here we list the GPU memory usage of each visual foundation model, one can modify ``self.tools`` with fewer visual foundation models to save your GPU memory:
